@@ -44,8 +44,7 @@ import { TreeNode } from '../models/tree-node.model';
             (treeDrop)="node.onDrop($event)"
             [treeAllowDrop]="node.allowDrop"
             [treeDrag]="node"
-            [treeDragEnabled]="node.allowDrag()">
-
+            [treeDragEnabled]="node.allowDrag">
             <TreeNodeContent [node]="node" [index]="index" [template]="templates.treeNodeTemplate">
             </TreeNodeContent>
           </div>

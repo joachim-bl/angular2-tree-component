@@ -75,7 +75,6 @@ export class TreeOptions {
   get getChildren(): any { return this.options.getChildren; }
   get hasCustomContextMenu(): boolean { return this.options.hasCustomContextMenu; }
   get context(): any { return this.options.context; }
-  get allowDrag(): boolean { return this.options.allowDrag; }
   get levelPadding(): number { return this.options.levelPadding || 0; }
   actionMapping: IActionMapping;
 
@@ -128,6 +127,14 @@ export class TreeOptions {
     else {
       return this.options.allowDrop === undefined ? true : this.options.allowDrop;
     }
+  }
+  allowDrag(node:TreeNode): boolean{
+    if(this.options.allowDrag instanceof Function){
+      return this.options.allowDrag(node);
+    }else{
+      return this.options.allowDrag == undefined? true: this.options.allowDrag;
+    }
+
   }
   nodeClass(node: TreeNode): string {
     return this.options.nodeClass ? this.options.nodeClass(node) : '';

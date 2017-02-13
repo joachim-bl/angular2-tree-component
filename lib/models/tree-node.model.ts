@@ -19,7 +19,7 @@ export class TreeNode implements ITreeNode {
   elementRef: ElementRef;
   children: TreeNode[];
   allowDrop: (draggedElement: any) => boolean;
-
+  allowDrag: (Element: any)=> boolean;
   private _originalNode: any;
   get originalNode() { return this._originalNode; };
 
@@ -33,6 +33,7 @@ export class TreeNode implements ITreeNode {
     }
 
     this.allowDrop = this.allowDropUnbound.bind(this);
+    this.allowDrag = this.allowDragUnbound.bind(this);
   }
 
   // helper get functions:
@@ -154,6 +155,9 @@ export class TreeNode implements ITreeNode {
 
   allowDropUnbound(element) {
     return this.options.allowDrop(element, { parent: this, index: 0 });
+  }
+  allowDragUnbound(element) {
+    return this.options.allowDrag(element);
   }
 
 
@@ -314,10 +318,6 @@ export class TreeNode implements ITreeNode {
   clearFilter() {
     this.isHidden = false;
     if (this.children) this.children.forEach((child) => child.clearFilter());
-  }
-
-  allowDrag() {
-    return this.options.allowDrag;
   }
 
   mouseAction(actionName: string, $event, data: any = null) {

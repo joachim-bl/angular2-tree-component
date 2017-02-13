@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { TreeNode, TREE_ACTIONS, KEYS, IActionMapping } from 'angular2-tree-component';
+import { TreeNode, TREE_ACTIONS, KEYS, IActionMapping } from './../../../../lib/angular2-tree-component';
 
 const actionMapping:IActionMapping = {
   mouse: {
@@ -192,7 +192,9 @@ export class AppComponent {
     idField: 'uuid',
     getChildren: this.getChildren.bind(this),
     actionMapping,
-    allowDrag: false
+    allowDrag: (node:TreeNode)=>{
+      return node.data.name == "child1";
+    }
   }
   onEvent = console.log.bind(console);
 
