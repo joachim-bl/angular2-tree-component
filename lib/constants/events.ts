@@ -11,5 +11,7 @@ export const TREE_EVENTS = {
   onInitialized: 'onInitialized',
   onUpdateData: 'onUpdateData',
   onMoveNode: 'onMoveNode',
-  onEvent: 'onEvent'
+  onEvent: 'onEvent',
+  onNodeEdit: 'onNodeEdit',
+  onNodeEditCommit: 'onNodeEditCommit'
 };

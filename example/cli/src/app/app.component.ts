@@ -196,7 +196,7 @@ export class AppComponent {
     allowEdit: (node:TreeNode)=>{
       return node.data.name.indexOf("child1")>-1;
     }
-  }
+   }
   onEvent = console.log.bind(console);
 
   go($event) {

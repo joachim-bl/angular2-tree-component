@@ -26,6 +26,7 @@ export class TreeNode implements ITreeNode {
   private clickStream = new Subject();
   private $clickStream = this.clickStream.asObservable();
   isEditMode:boolean =  false;
+  editValue:string;
 
   get originalNode() { return this._originalNode; };
 
@@ -45,7 +46,9 @@ export class TreeNode implements ITreeNode {
       .filter((interval)=> interval.interval > 500 && interval.interval < 1000)
       .subscribe((click)=>{
         if(this.allowEdit()==true){
+          this.editValue = this.data.name;
           this.isEditMode = true;
+          this.fireEvent({ eventName: TREE_EVENTS.onNodeEdit, node: this, value: this.editValue });
         }
     });
 
@@ -262,6 +265,7 @@ export class TreeNode implements ITreeNode {
   }
   input_blur(event){
     this.isEditMode = false;
+    this.fireEvent({ eventName: TREE_EVENTS.onNodeEditCommit, node: this, value: this.editValue });
   }
   toggleActivated(multi = false) {
     if(!this.isEditMode ){

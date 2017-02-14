@@ -62,6 +62,9 @@ export interface ITreeOptions {
    * Will be called when clicking twice on a node with a delay >500ms <1s
    */
    allowEdit?: boolean | IAllowEditFn;
+   /**
+    * check if the newly entered node caption is valid and return either a boolean value or a corrected value;
+    */
    levelPadding?: number;
    /**
     * deprecated

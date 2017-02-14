@@ -46,7 +46,7 @@ import { TreeNode } from '../models/tree-node.model';
             [treeDrag]="node"
             [treeDragEnabled]="node.allowDrag()">
             <div *ngIf="node.isEditMode==true">
-              <input focus-input type="text" [(ngModel)]="node.data.name" (blur)="node.input_blur($event)" (keyup.enter)="node.input_blur($event)"/>
+              <input focus-input type="text" [(ngModel)]="node.editValue" (blur)="node.input_blur($event)" (keyup.enter)="node.input_blur($event)"/>
             </div>
             <TreeNodeContent *ngIf="node.isEditMode==false" [node]="node" [index]="index" [template]="templates.treeNodeTemplate">
             </TreeNodeContent>
@@ -68,9 +68,6 @@ export class TreeNodeComponent implements AfterViewInit {
   @Input() templates: any;
 
   constructor(private elementRef: ElementRef) {
-  }
-  input_blur(event){
-    console.log('blurring....',event);
   }
   ngAfterViewInit() {
     this.node.elementRef = this.elementRef;
