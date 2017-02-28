@@ -40,8 +40,8 @@ export class TreeNode implements ITreeNode {
     }
     this.allowEdit = this.allowEditUnbound.bind(this);
     this.allowDrop = this.allowDropUnbound.bind(this);
+<<<<<<< HEAD
 
-    this.allowDrag = this.allowDragUnbound.bind(this);
     this.$clickStream
       .timeInterval()
       .filter((interval)=> interval.interval > 500 && interval.interval < 1000)
@@ -53,6 +53,9 @@ export class TreeNode implements ITreeNode {
         }
     });
 
+=======
+    this.allowDrag = this.allowDragUnbound.bind(this);
+>>>>>>> allowDragFunc
   }
 
   // helper get functions:

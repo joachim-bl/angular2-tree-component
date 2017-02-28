@@ -55,8 +55,13 @@ import {inputAnimation, nodeAnimation} from './../animations/tree-edit-node';
             (treeDrop)="node.onDrop($event)"
             [treeAllowDrop]="node.allowDrop"
             [treeDrag]="node"
-            [treeDragEnabled]="node.allowDrag">
+<<<<<<< HEAD
+            [treeDragEnabled]="node.allowDrag()">
             <TreeNodeContent *ngIf="node.isEditMode==false" [@showNodeAnimation]="node.isEditMode" [node]="node" [index]="index" [template]="templates.treeNodeTemplate">
+=======
+            [treeDragEnabled]="node.allowDrag">
+            <TreeNodeContent [node]="node" [index]="index" [template]="templates.treeNodeTemplate">
+>>>>>>> allowDragFunc
             </TreeNodeContent>
             <div *ngIf="node.isEditMode" [@showInputAnimation]="node.isEditeMode" class="editBox">
               <input focus-input type="text" [(ngModel)]="node.editValue" (blur)="node.input_blur($event)" (keyup.enter)="node.input_blur($event)"/>
